@@ -10,7 +10,7 @@ CREATE TABLE products (
     product_quantity INT NOT NULL,
     product_details TEXT, 
     product_image TEXT,
-    inStock BOOLEAN
+    instock BOOLEAN
 );
 
 CREATE TABLE users (  -- Renamed from `user` to `users`
