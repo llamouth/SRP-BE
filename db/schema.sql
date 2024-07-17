@@ -12,6 +12,10 @@ CREATE TABLE products (
     inStock BOOLEAN
 );
 
+CREATE TABLE orders (
+
+);
+
 CREATE TABLE cart (
 
-)
+);
