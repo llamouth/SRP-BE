@@ -30,3 +30,17 @@ CREATE TABLE orders (
     order_user INT REFERENCES users (user_id),  -- Updated to reference `users`
     order_cart INT REFERENCES cart (cart_id)
 );
+
+CREATE TABLE products_in_cart (
+    products_in_cart_id SERIAL PRIMARY KEY
+    cart_id INT 
+    product_id
+)
+
+
+1  3  5
+2  3  8
+3  5  5
+4  7  1
+
+
