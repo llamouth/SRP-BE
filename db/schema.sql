@@ -6,14 +6,14 @@ CREATE DATABASE cafe_dev;
 CREATE TABLE products (
     product_id SERIAL PRIMARY KEY,
     product_name TEXT NOT NULL,
-    product_price INT NOT NULL,
+    product_price DECIMAL(10, 2) NOT NULL,  -- Using DECIMAL for monetary values
     product_quantity INT NOT NULL,
     product_details TEXT, 
     product_image TEXT,
-    instock BOOLEAN
+    instock BOOLEAN DEFAULT TRUE
 );
 
-CREATE TABLE users (  -- Renamed from `user` to `users`
+CREATE TABLE users ( 
     user_id SERIAL PRIMARY KEY,
     user_name TEXT NOT NULL,
     user_address TEXT NOT NULL
@@ -21,12 +21,18 @@ CREATE TABLE users (  -- Renamed from `user` to `users`
 
 CREATE TABLE cart (
     cart_id SERIAL PRIMARY KEY,
-    cart_owner INT REFERENCES users (user_id) NOT NULL,  -- Updated to reference `users`
-    cart_products TEXT NOT NULL
+    cart_owner INT NOT NULL REFERENCES users (user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE cart_products (
+    cart_product_id SERIAL PRIMARY KEY,
+    cart_id INT NOT NULL REFERENCES cart (cart_id) ON DELETE CASCADE,
+    product_id INT NOT NULL REFERENCES products (product_id) ON DELETE CASCADE,
+    quantity INT NOT NULL
 );
 
 CREATE TABLE orders (
     orders_id SERIAL PRIMARY KEY,
-    order_user INT REFERENCES users (user_id),  -- Updated to reference `users`
-    order_cart INT REFERENCES cart (cart_id)
+    order_user INT REFERENCES users (user_id) ON DELETE SET NULL, 
+    order_cart INT REFERENCES cart (cart_id) ON DELETE SET NULL
 );
