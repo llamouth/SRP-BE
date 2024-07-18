@@ -11,8 +11,12 @@ const clearWhiteSpace = (req, res, next) => {
     const { product_name, product_details, product_image } = req.body;
 
     req.body.product_name = product_name.trim()
-    req.body.product_details = product_details.trim()
-    req.body.product_image = product_image.trim()
+    if(product_details){
+        req.body.product_details = product_details.trim()
+    }
+    if(product_image){
+        req.body.product_image = product_image.trim()
+    }
     
     return next()
 }

@@ -3,16 +3,16 @@
 
 -- Insert data into the products table
 INSERT INTO products (product_name, product_price, product_quantity) VALUES 
-('coffee', 400, 20),
-('bagel', 100, 20),
-('butter roll', 100, 10),
-('snicker', 100, 10),
-('crossaint', 100, 15),
-('bread', 100, 10),
-('cookie', 100, 10),
-('coke', 100, 10),
-('snapple', 200, 10),
-('pepsi', 250, 15);
+('coffee', 4, 20),
+('bagel', 1, 20),
+('butter roll', 1, 10),
+('snicker', 1, 10),
+('crossaint', 1, 15),
+('bread', 1, 10),
+('cookie', 1, 10),
+('coke', 1, 10),
+('snapple', 2, 10),
+('pepsi', 2.50, 15);
 
 -- Insert data into the users table
 INSERT INTO users (user_name, user_address, user_password) VALUES 
