@@ -33,7 +33,7 @@ CREATE TABLE cart_products (
 );
 
 CREATE TABLE orders (
-    orders_id SERIAL PRIMARY KEY,
+    order_id SERIAL PRIMARY KEY,
     order_user INT REFERENCES users (user_id) ON DELETE SET NULL, 
     order_cart INT REFERENCES cart (cart_id) ON DELETE SET NULL
 );

@@ -2,7 +2,7 @@ const db = require("../db/dbConfig")
 
 const getAllCarts = async () => {
     try {
-        const allCarts = await db.any("SELECT * FROM cart")
+        const allCarts = await db.any("SELECT cart.cart_owner, cart.cart_id, cart_products.products_id, cart_products.quantity FROM cart JOIN cart_products ON cart.cart_id = cart_products.carts_id ")
         return allCarts
     } catch (error) {
         return error
