@@ -9,4 +9,13 @@ const getAllUsers = async () => {
     }
 }
 
-module.exports = { getAllUsers }
+const getOneUser = async (id) => {
+    try {
+        const oneUser = await db.one("SELECT * FROM users WHERE user_id=$1", id)
+        return oneUser
+    } catch (error) {
+        return error
+    }
+}
+
+module.exports = { getAllUsers, getOneUser }
