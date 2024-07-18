@@ -18,4 +18,24 @@ const getOneUser = async (id) => {
     }
 }
 
-module.exports = { getAllUsers, getOneUser }
+const createUser = async (user) => {
+    const {user_name, user_address} = user
+    try {
+        const newUser = db.one("INSERT INTO users (user_name, user_address) VALUES ($1, $2) RETURNING *", [user_name, user_address])
+        return newUser
+    } catch (error) {
+        return error
+    }
+}
+
+const updateUser = async (id, user) => {
+    const { user_name, user_address } = user
+    try {
+        const updatedUser = await db.one("UPDATE users SET user_name=$1, user_address=$2 WHERE user_id=$3 RETURNING *", [user_name, user_address, id])
+        return updatedUser
+    } catch (error) {
+        return error
+    }
+}
+
+module.exports = { getAllUsers, getOneUser, createUser, updateUser }

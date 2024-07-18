@@ -18,10 +18,10 @@ INSERT INTO users (user_name, user_address) VALUES
 ('Jane Doe', '789 xyz ave'),
 ('Bob', '456 mno dr');
 
-INSERT INTO cart (cart_owner,   ) VALUES 
-(3, '1-2, 2-1, 3-3'),
-(2, '10-2, 5-1, 6-3'),
-(4, '3-1, 6-3, 2-1');
+INSERT INTO cart (cart_owner, cart_products) VALUES 
+(3, 2),
+(2, 1),
+(4, 4);
 
 
 INSERT INTO products_in_cart (cart_id, product_id, qty) VALUES 
@@ -35,5 +35,5 @@ INSERT INTO products_in_cart (cart_id, product_id, qty) VALUES
 
 
 INSERT INTO orders (order_user, order_cart) VALUES 
-(3 , 1),
+(3 , 2),
 (4 , 3);
