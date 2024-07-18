@@ -1,6 +1,7 @@
 const express = require("express")
 const products = express.Router()
 const { getAllProducts, getOneProduct, createProduct, updateProduct, deleteProduct } = require("../queries/products")
+const { checkId, clearWhiteSpace, checkNumber } = require("../validations/productsValidation")
 
 products.get("/", async (req, res) => {
     const allProducts = await getAllProducts()
@@ -11,7 +12,7 @@ products.get("/", async (req, res) => {
     }
 })
 
-products.get("/:id", async (req, res) => {
+products.get("/:id", checkId, async (req, res) => {
     const { id } = req.params;
     const oneProduct = await getOneProduct(id)
 
@@ -22,12 +23,12 @@ products.get("/:id", async (req, res) => {
     }
 })
 
-products.post("/", async (req, res) => {
+products.post("/", checkNumber, clearWhiteSpace, async (req, res) => {
     const createdProduct = await createProduct(req.body)
     res.status(201).json(createdProduct)
 })
 
-products.put("/:id", async (req, res) => {
+products.put("/:id", checkId, checkNumber, clearWhiteSpace, async (req, res) => {
     const { id } = req.params 
 
     const updatedProduct = await updateProduct(id, req.body)
@@ -38,7 +39,7 @@ products.put("/:id", async (req, res) => {
     }
 })
 
-products.delete("/:id", async (req, res) => {
+products.delete("/:id", checkId, async (req, res) => {
     const { id } = req.params
     const deletedProduct = await deleteProduct(id)
     res.status(200).json(deletedProduct)
