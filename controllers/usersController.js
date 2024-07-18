@@ -1,6 +1,6 @@
 const express = require("express")
 const usersController = express.Router()
-const { getAllUsers, getOneUser, createUser, updateUser } = require("../queries/Users")
+const { getAllUsers, getOneUser, createUser, updateUser, deleteUser } = require("../queries/Users")
 
 usersController.get("/", async (req, res) => {
     const allUsers = await getAllUsers()
@@ -37,6 +37,12 @@ usersController.put("/:id", async (req, res) => {
     }else {
         res.status(500).json({ error: "Internal Server Error"})
     }
+})
+
+usersController.delete("/:id", async (req, res) => {
+    const { id } = req.params
+    const deletedUser = await deleteUser(id)
+    res.status(200).json(deletedUser)
 })
 
 module.exports = usersController

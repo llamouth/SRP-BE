@@ -38,4 +38,13 @@ const updateUser = async (id, user) => {
     }
 }
 
-module.exports = { getAllUsers, getOneUser, createUser, updateUser }
+const deleteUser = async (id) => {
+    try {
+        const deletedUser = await db.one("DELETE FROM users WHERE user_id=$1 RETURNING *", id)
+        return deletedUser
+    } catch (error) {
+        return error
+    }
+}
+
+module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser }
