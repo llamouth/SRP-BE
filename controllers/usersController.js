@@ -1,8 +1,8 @@
 const express = require("express")
-const usersController = express.Router()
-const { getAllUsers, getOneUser, createUser, updateUser, deleteUser } = require("../queries/Users")
+const users = express.Router()
+const { getAllUsers, getOneUser, createUser, updateUser, deleteUser } = require("../queries/users")
 
-usersController.get("/", async (req, res) => {
+users.get("/", async (req, res) => {
     const allUsers = await getAllUsers()
 
     if(allUsers) {
@@ -12,7 +12,7 @@ usersController.get("/", async (req, res) => {
     }
 })
 
-usersController.get("/:id", async (req, res) => {
+users.get("/:id", async (req, res) => {
     const { id } = req.params
     const oneUser = await getOneUser(id)
 
@@ -23,12 +23,12 @@ usersController.get("/:id", async (req, res) => {
     }
 })
 
-usersController.post("/", async (req, res) => {
+users.post("/", async (req, res) => {
     const newUser = await createUser(req.body)
     res.status(201).json(newUser)
 })
 
-usersController.put("/:id", async (req, res) => {
+users.put("/:id", async (req, res) => {
     const { id } = req.params
     const updatedUser = await updateUser(id, req.body)
 
@@ -39,10 +39,10 @@ usersController.put("/:id", async (req, res) => {
     }
 })
 
-usersController.delete("/:id", async (req, res) => {
+users.delete("/:id", async (req, res) => {
     const { id } = req.params
     const deletedUser = await deleteUser(id)
     res.status(200).json(deletedUser)
 })
 
-module.exports = usersController
+module.exports = users
