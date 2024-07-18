@@ -11,7 +11,7 @@ const getAllCarts = async () => {
 
 const getOneCart = async (id) => {
     try {
-        const oneCart = await db.one("SELECT * FROM cart WHERE cart_id=$1", id)
+        const oneCart = await db.any("SELECT cart.cart_owner, cart.cart_id, cart_products.products_id, cart_products.quantity FROM cart JOIN cart_products ON cart.cart_id = cart_products.carts_id WHERE cart_id=$1", id)
         return oneCart
     } catch (error) {
         return error

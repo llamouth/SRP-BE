@@ -15,11 +15,11 @@ INSERT INTO products (product_name, product_price, product_quantity) VALUES
 ('pepsi', 250, 15);
 
 -- Insert data into the users table
-INSERT INTO users (user_name, user_address) VALUES 
-('Owner', 'Cafe'),
-('John Doe', '123 abc st'),
-('Jane Doe', '789 xyz ave'),
-('Bob', '456 mno dr');
+INSERT INTO users (user_name, user_address, user_password) VALUES 
+('Owner', 'Cafe', 'ImTheOwner1'),
+('John Doe', '123 abc st', 'password123'),
+('Jane Doe', '789 xyz ave', 'password123'),
+('Bob', '456 mno dr', 'password123');
 
 -- Insert data into the cart table
 INSERT INTO cart (cart_owner) VALUES 
@@ -28,7 +28,7 @@ INSERT INTO cart (cart_owner) VALUES
 (4); -- Bob's cart
 
 -- Insert data into the cart_products table
-INSERT INTO cart_products (cart_id, product_id, quantity) VALUES 
+INSERT INTO cart_products (carts_id, products_id, quantity) VALUES 
 (1, 1, 1), -- Jane Doe's cart: 1 coffee
 (1, 2, 2), -- Jane Doe's cart: 2 bagels
 (2, 10, 1), -- John Doe's cart: 1 pepsi

@@ -16,6 +16,7 @@ CREATE TABLE products (
 CREATE TABLE users ( 
     user_id SERIAL PRIMARY KEY,
     user_name TEXT NOT NULL,
+    user_password VARCHAR(15) NOT NULL,
     user_address TEXT NOT NULL
 );
 
@@ -26,8 +27,8 @@ CREATE TABLE cart (
 
 CREATE TABLE cart_products (
     cart_product_id SERIAL PRIMARY KEY,
-    cart_id INT NOT NULL REFERENCES cart (cart_id) ON DELETE CASCADE,
-    product_id INT NOT NULL REFERENCES products (product_id) ON DELETE CASCADE,
+    carts_id INT NOT NULL REFERENCES cart (cart_id) ON DELETE CASCADE,
+    products_id INT NOT NULL REFERENCES products (product_id) ON DELETE CASCADE,
     quantity INT NOT NULL
 );
 
