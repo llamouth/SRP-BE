@@ -19,9 +19,9 @@ const getOneCartProduct = async (id) => {
 }
 
 const createCartProduct = async (cartProduct) => {
-    const { carts_id, products_id, quantity } = cartProduct
+    const { carts_id, products_id, products_products_quantity } = cartProduct
     try {
-        const createdCartProduct = await db.one("INSERT INTO cart_products (carts_id, products_id, quantity) VALUES($1, $2, $3) RETURNING *", [carts_id, products_id, quantity])
+        const createdCartProduct = await db.one("INSERT INTO cart_products (carts_id, products_id, products_products_quantity) VALUES($1, $2, $3) RETURNING *", [carts_id, products_id, products_products_quantity])
         return createdCartProduct
     } catch (error) {
         return error
@@ -29,9 +29,9 @@ const createCartProduct = async (cartProduct) => {
 }
 
 const updateCartProduct = async (id, cartProduct) => {
-    const { carts_id, products_id, quantity } = cartProduct
+    const { carts_id, products_id, products_quantity } = cartProduct
     try {
-        const updatedCartProduct = await db.one("UPDATE cart_products SET carts_id=$1, products_id=$2, quantity=$3 WHERE cart_product_id=$4 RETURNING *", [carts_id, products_id, quantity, id])
+        const updatedCartProduct = await db.one("UPDATE cart_products SET carts_id=$1, products_id=$2, products_quantity=$3 WHERE cart_product_id=$4 RETURNING *", [carts_id, products_id, products_quantity, id])
         return updatedCartProduct
     } catch (error) {
         return error
