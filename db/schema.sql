@@ -29,7 +29,7 @@ CREATE TABLE cart_products (
     cart_product_id SERIAL PRIMARY KEY,
     carts_id INT NOT NULL REFERENCES cart (cart_id) ON DELETE CASCADE,
     products_id INT NOT NULL REFERENCES products (product_id) ON DELETE CASCADE,
-    quantity INT NOT NULL
+    products_quantity INT NOT NULL
 );
 
 CREATE TABLE orders (

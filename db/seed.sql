@@ -28,7 +28,7 @@ INSERT INTO cart (cart_owner) VALUES
 (4); -- Bob's cart
 
 -- Insert data into the cart_products table
-INSERT INTO cart_products (carts_id, products_id, quantity) VALUES 
+INSERT INTO cart_products (carts_id, products_id, products_quantity) VALUES 
 (1, 1, 1), -- Jane Doe's cart: 1 coffee
 (1, 2, 2), -- Jane Doe's cart: 2 bagels
 (2, 10, 1), -- John Doe's cart: 1 pepsi
