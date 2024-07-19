@@ -15,7 +15,7 @@ cartProducts.get("/", async (req, res) => {
 cartProducts.get("/:id", async (req, res) => {
     const { id } = req.params
     const oneCartProduct = await getOneCartProduct(id)
-    if(oneCartProduct.quantity){
+    if(oneCartProduct.products_quantity){
         res.status(200).json(oneCartProduct)
     }else {
         res.status(500).json({ error: "Internal Server Error"})
