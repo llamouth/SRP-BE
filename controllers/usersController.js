@@ -25,16 +25,14 @@ users.get("/:id", checkId, async (req, res) => {
 })
 
 
-// Signup Route
 users.post("/", async (req, res) => {
-    const { username, password, address } = req.body;
     const allUsers = await getAllUsers();
-    const userExists = allUsers.find(user => user.user_name === username);
+    const userExists = allUsers.find(user => user.user_name === req.body.user_name);
     if (userExists) {
         return res.status(400).json({ message: "User already exists" });
     }
 
-    const newUser = await createUser({ user_name: username, user_password: password, user_address: address });
+    const newUser = await createUser(req.body);
     if (newUser) {
         res.status(201).json({ message: "User registered successfully", user: newUser });
     } else {

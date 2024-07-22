@@ -10,9 +10,9 @@ INSERT INTO products (product_name, product_price, product_quantity) VALUES
 ('Crossaint', 1, 15),
 ('Bread', 1, 10),
 ('Cookie', 1, 10),
-('Coke', 1, 10),
+('Root Beer', 1, 10),
 ('Snapple', 2, 10),
-('Pepsi', 2.50, 15);
+('Bottle of Water', 2.50, 15);
 
 -- Insert data into the users table
 INSERT INTO users (user_full_name, user_name, user_address, user_password) VALUES 
