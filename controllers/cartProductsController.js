@@ -23,7 +23,6 @@ cartProducts.get("/:id", async (req, res) => {
 })
 
 cartProducts.post("/", async (req, res) => {
-    const { id } = req.params
     const createdCartProduct = await createCartProduct(req.body)
     res.status(201).json(createdCartProduct)
 })

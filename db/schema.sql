@@ -6,15 +6,16 @@ CREATE DATABASE cafe_dev;
 CREATE TABLE products (
     product_id SERIAL PRIMARY KEY,
     product_name TEXT NOT NULL,
-    product_price DECIMAL(10, 2) NOT NULL,  -- Using DECIMAL for monetary values
+    product_price DECIMAL(10, 2) NOT NULL,  
     product_quantity INT NOT NULL,
     product_details TEXT, 
     product_image TEXT,
-    instock BOOLEAN DEFAULT TRUE
+    instock BOOLEAN DEFAULT TRUE NOT NULL
 );
 
 CREATE TABLE users ( 
     user_id SERIAL PRIMARY KEY,
+    user_full_name TEXT NOT NULL,
     user_name TEXT NOT NULL,
     user_password VARCHAR(15) NOT NULL,
     user_address TEXT NOT NULL
