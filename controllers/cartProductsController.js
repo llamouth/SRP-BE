@@ -1,6 +1,6 @@
 const express = require("express")
 const cartProducts = express.Router()
-const { getAllCartProducts, getOneCartProduct, createCartProduct, updateCartProduct, deleteCartProduct} = require("../queries/cartProducts")
+const { getAllCartProducts, getOneCartsProducts, createCartProduct, updateCartProduct, deleteCartProduct} = require("../queries/cartProducts")
 const { any } = require("../db/dbConfig")
 
 cartProducts.get("/", async (req, res) => {
@@ -14,8 +14,8 @@ cartProducts.get("/", async (req, res) => {
 
 cartProducts.get("/:id", async (req, res) => {
     const { id } = req.params
-    const oneCartProduct = await getOneCartProduct(id)
-    if(oneCartProduct.products_quantity){
+    const oneCartProduct = await getOneCartsProducts(id)
+    if(oneCartProduct){
         res.status(200).json(oneCartProduct)
     }else {
         res.status(500).json({ error: "Internal Server Error"})

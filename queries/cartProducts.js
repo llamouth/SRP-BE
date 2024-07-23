@@ -9,9 +9,9 @@ const getAllCartProducts = async () => {
     }
 }
 
-const getOneCartProduct = async (id) => {
+const getOneCartsProducts = async (id) => {
     try {
-        const oneCartProduct = await db.one("SELECT * FROM cart_products WHERE cart_product_id=$1", id)
+        const oneCartProduct = await db.any("SELECT * FROM cart_products WHERE carts_id=$1", id)
         return oneCartProduct
     } catch (error) {
         return error
@@ -47,4 +47,4 @@ const deleteCartProduct = async (id) => {
     }
 }
 
-module.exports = { getAllCartProducts, getOneCartProduct, createCartProduct, updateCartProduct, deleteCartProduct }
+module.exports = { getAllCartProducts, getOneCartsProducts, createCartProduct, updateCartProduct, deleteCartProduct }
