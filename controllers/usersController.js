@@ -1,6 +1,6 @@
 const express = require("express")
 const users = express.Router()
-const { getAllUsers, getOneUser, createUser, updateUser, deleteUser } = require("../queries/users")
+const { getAllUsers, getOneUser, createUser, updateUser, deleteUser } = require("../queries/Users")
 const { checkId, clearWhiteSpace, checkPasswordLength } = require("../validations/usersValidation")
 
 users.get("/", async (req, res) => {
